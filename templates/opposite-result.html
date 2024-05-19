@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Practice எதிர்ச்சொல்</title>
+        <link rel="stylesheet" type="text/css"
+            href="static/synonym_style.css">
+        <script
+            src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    </head>
+    <body>
+
+        <header>
+            <img id="logo" src="static/logotrans.png" alt="Profile Icon">
+            <h1>எதிர்ச்சொல்</h1>
+            <img src="static/profileicon.png" alt="Profile Icon">
+        </header>
+        <main>
+            <div id="categoryForm">
+
+                <div style="padding-left: 4%;">
+
+                    <p style="height: 20px;">
+                        சரியான விடையைத் தேர்ந்தெடுங்கள்:-
+                    </p>
+                    <br>
+                    <p>
+                        <span class="typee"
+                            style="text-decoration: underline;">எதிர்ச்சொல்
+                            : </span>
+                    </p>
+                    <p>{{result[0]}} x ___________</p>
+                    <p>
+                        <button class="special-word">{{result[1]}}</button>
+                        <button class="special-word">{{result[2]}}</button> 
+                        <button class="special-word">{{result[3]}}</button> 
+                        <button class="special-word">{{result[4]}}</button>
+                    </p>
+                    <br>
+                    <p id="answer"
+                        style="visibility: hidden;margin: 0px; padding: 0px;">{{result[5]}}</p>
+
+                <div id="OtherOptionBox">
+                    <form id="newwordForm" action="/result" method="post">
+                        <input type="hidden" name="option" value="Opposite">
+                        <button type="submit" class="float-left submit-button">அடுத்த எடுத்துக்காட்டு</button>
+                    </form>
+                    <form id="returnhome" action="/home">
+                        <button class="float-left submit-button">முகப்பு பக்கம்</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+            <p>Made with 🤍 by <a href="https://www.linkedin.com/in/amarjit-madhumalararungeethayan-7305941bb/" style="text-decoration: none;">Amarjit</a>, <a href="https://www.linkedin.com/in/dharanish-rahul-1b0774225/" style="text-decoration: none;">Dharanish</a>, <a href="https://www.linkedin.com/in/mithmusq3/" style="text-decoration: none;">Mithilesh</a></p>
+        </footer>
+
+        <script>
+            window.addEventListener("load", (event) => {
+        new cursoreffects.fairyDustCursor();
+    });
+    
+    const buttons = document.querySelectorAll(".special-word"); // Select all buttons with class "special-word"
+
+buttons.forEach(button => {
+  button.addEventListener("click", function() {
+    var option = button.textContent;
+ var answer= document.getElementById('answer').textContent;
+    console.log(option);
+    console.log(answer);
+    console.log(option==answer);
+    console.log((option).localeCompare(answer))
+    if (answer.includes(option)) {
+      button.classList.add("correct"); // Add green background for selected button (using CSS)
+    } else {
+      button.classList.add("wrong"); // Add green background for selected button (using CSS)
+
+    }
+  });
+});
+
+    
+    </script>
+    </body>
+</html>

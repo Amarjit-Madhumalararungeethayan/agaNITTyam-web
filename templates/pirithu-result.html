@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Practice பிரித்து எழுதுக</title>
+        <link rel="stylesheet" type="text/css"
+            href="static/synonym_style.css">
+            <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    </head>
+    <body>
+
+        <header>
+            <img id="logo" src="static/logotrans.png" alt="Profile Icon">
+            <h1>பிரித்து எழுதுக</h1>
+            <img src="static/profileicon.png" alt="Profile Icon">
+        </header>
+        <main>
+            <div id="categoryForm">
+
+                <div style="padding-left: 4%;">
+
+                    <p style="height: 20px;">
+                        சரியான விடையைத் தேர்ந்தெடுங்கள்:-
+                    </p>
+                    <br>
+                    <p>
+                        <span class="typee"
+                            style="text-decoration: underline;">பிரித்து எழுதுக
+                            : </span>
+                    </p>
+                    <p>{{result[0]}} = ___________  +  ___________</p>
+                    <br>
+                    
+                    <br>
+                    <button onclick="showText()">Check Answer</button>
+                    <br>
+                    <br>
+                    <p id="ans"  class="hidden-answer"
+                        style="visibility:hidden; color: red; width: fit-content; border-style: dotted; border-color: black; border-width: 1px; padding: 10px;">{{
+                        result[0] }} = {{result[1]}} + {{result[2]}}</p>
+                    <br>
+                </div>
+
+                <div id="OtherOptionBox">
+                    <form id="newwordForm" action="/result" method="post">
+                        <input type="hidden" name="option" value="Pirithu">
+                        <button type="submit" class="float-left submit-button">அடுத்த எடுத்துக்காட்டு</button>
+                    </form>
+                    <form id="returnhome" action="/home">
+                        <button class="float-left submit-button">முகப்பு பக்கம்</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+            <p>Made with 🤍 by <a href="https://www.linkedin.com/in/amarjit-madhumalararungeethayan-7305941bb/" style="text-decoration: none;">Amarjit</a>, <a href="https://www.linkedin.com/in/dharanish-rahul-1b0774225/" style="text-decoration: none;">Dharanish</a>, <a href="https://www.linkedin.com/in/mithmusq3/" style="text-decoration: none;">Mithilesh</a></p>
+        </footer>
+
+        <script>
+            window.addEventListener("load", (event) => {
+        new cursoreffects.fairyDustCursor();
+    });
+    
+        function showText(){
+            var ans = document.getElementById('ans');
+            ans.classList.add('show-answer');
+            if(ans.style.visibility=="hidden"){
+                ans.style.visibility="visible";
+            } else{
+                ans.style.visibility="hidden"
+            }
+        }
+
+    
+    </script>
+    </body>
+</html>

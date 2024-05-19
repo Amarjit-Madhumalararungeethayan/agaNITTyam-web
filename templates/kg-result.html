@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Knowledge Graph</title>
+    <link rel="stylesheet" type="text/css" href="static/kg_result_style.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="static/logotrans.png" alt="Profile Icon">
+        <h1>Tamil Knowledge Graph</h1>
+        <img src="static/profileicon.png" alt="Profile Icon">
+    </header>
+    <main>
+        <div id="graph"></div>
+        <!--
+        <p id="result">{{result}}</p>
+        -->
+        <p> <strong>தமிழ் இலக்கண உலகில் பல்வேறு தமிழ் சொற்களுக்கு இடையே உள்ள தொடர்புகளை ஆராயுங்கள். </strong></p>
+        <!-- <img class="sample" style="width: 650px; height: 300px; margin-bottom: 20px;" src="static/examplekg.png" alt="Knowledge Graph Example"> -->
+        <br>
+        <p class="special"> {{result[0]}}</p>
+        <p> இது முதல் வார்த்தை. இந்த வார்த்தையின் <strong>எதிர் வார்த்தையைக்</strong> கண்டறியவும்</p>
+        <br>
+        <p class="special"> {{result[1]}}</p>
+        <p> இப்போது இந்த வார்த்தையின் <strong>பன்மையைக்</strong> கண்டறியவும்</p>
+    
+        <p class="spec"> {{result[2]}}</p>
+
+        <div id="OtherOptionBox">
+            <form id="newwordForm" action="/result" method="post">
+                <input type="hidden" name="option" value="KG">
+                <button type="submit" class="float-left submit-button">அடுத்த எடுத்துக்காட்டு</button>
+            </form>
+            <form id="returnhome" action="/home">
+                <button class="float-left submit-button">Return
+                    Home</button>
+            </form>
+        </div>
+        <br>
+        <br> 
+        <br>
+        <p style="opacity: 50%;">We are continuously working to make agaNITTyam better </p>
+    </main>
+    <footer>
+        <p>Made with 🤍 by <a href="https://www.linkedin.com/in/amarjit-madhumalararungeethayan-7305941bb/" style="text-decoration: none;">Amarjit</a>, <a href="https://www.linkedin.com/in/dharanish-rahul-1b0774225/" style="text-decoration: none;">Dharanish</a>, <a href="https://www.linkedin.com/in/mithmusq3/" style="text-decoration: none;">Mithilesh</a></p>
+    </footer>
+
+    <script>
+        window.addEventListener("load", () => {
+            new cursoreffects.fairyDustCursor();
+        });
+
+        var res = document.getElementById('result').innerText; // Getting result text
+        var circleRadius = 50; // Define the radius of the circle
+        var fontSize = Math.min(2 * circleRadius, 24); // Adjust the maximum font size as needed
+
+        // Create a new graph
+        var svg = d3.select("#graph")
+            .append("svg")
+            .attr("width", 400)
+            .attr("height", 200);
+
+        // Add the circle
+        svg.append("circle")
+            .attr("cx", 300)
+            .attr("cy", 100)
+            .attr("r", circleRadius)
+            .attr("fill", "#f7b3ee");
+
+        // Add the text
+        svg.append("text")
+            .attr("x", 300)
+            .attr("y", 100)
+            .attr("dy", ".35em")
+            .attr("text-anchor", "middle")
+            .attr("font-size", fontSize) // Set the font size dynamically
+            .text(res);
+    </script>
+</body>
+
+</html>
